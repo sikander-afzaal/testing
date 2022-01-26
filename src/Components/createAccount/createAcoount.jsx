@@ -112,8 +112,9 @@ function CreateAcoount() {
       <FormControlLabel control={<Checkbox/>} label="I would like to receive emails about new features and news at Streamify." />
     </FormGroup>
         <Box sx={{my:3,display:'flex',justifyContent:'space-between'}}>
-            <Button sx={{borderRadius:'20px',fontWeight:'bold',color:"#0A56A3"}}>SIGN IN INSTEAD</Button><Button variant="contained" onClick={()=>{handleNext()}} sx={{borderRadius:'20px',fontWeight:'bold'}} style={{backgroundColor:"#0A56A3"}}
-            >NEXT</Button>
+            <Button sx={{borderRadius:'20px',fontWeight:'bold',color:"#0A56A3"}}>SIGN IN INSTEAD</Button>
+            <Link to="/verifyAccount"><Button variant="contained" onClick={()=>{handleNext()}} sx={{borderRadius:'20px',fontWeight:'bold'}} style={{backgroundColor:"#0A56A3"}}
+            >NEXT</Button></Link>
         </Box>
         </Card>
         <Box sx={{pr:2}}>{footerLinks}</Box>
