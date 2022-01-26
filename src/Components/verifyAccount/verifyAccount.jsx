@@ -33,7 +33,7 @@ import {Link} from 'react-router-dom'
         </Typography></Link>
         <Box sx={{mt:5,display:'flex',justifyContent:'space-between'}}>
             <Link to="/signin" className="link"><Button variant="outlined" sx={{borderRadius:'20px',fontWeight:'bold',border:2,borderColor:"#0A56A3",color:"#0A56A3"}}>NOT NOW</Button></Link>
-            <Link to="/signin" className="link"><Button variant="contained" sx={{borderRadius:'20px',fontWeight:'bold'}} style={{backgroundColor:"#0A56A3"}}>SEND</Button></Link>
+            <Link to="/signinpass" className="link"><Button variant="contained" sx={{borderRadius:'20px',fontWeight:'bold'}} style={{backgroundColor:"#0A56A3"}}>SEND</Button></Link>
         </Box>
       </CardContent>
     </React.Fragment>

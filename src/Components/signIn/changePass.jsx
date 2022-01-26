@@ -60,7 +60,7 @@ const card = (
         />
         </Box>
         <Box className="d-md-flex d-block" sx={{mt:3,justifyContent:'space-between'}}>
-            <Link to="/" className="link"><Button sx={{borderRadius:'20px',fontWeight:'bold',color:"#0A56A3"}}>SKIP</Button></Link>
+            <Button sx={{borderRadius:'20px',fontWeight:'bold',color:"#0A56A3"}}>SKIP</Button>
             <Button className="mt-md-0 ml-md-0 ml-sm-5 ml-0 mt-3" variant="contained" sx={{borderRadius:'20px',fontWeight:'bold'}} style={{backgroundColor:"#0A56A3"}}>SAVE PASSWORD</Button>
         </Box>
         </Box>

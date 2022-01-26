@@ -1,4 +1,4 @@
-import React,{useState,useRef} from 'react'
+import React,{useState,useEffect} from 'react'
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -12,8 +12,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import InputAdornment from '@mui/material/InputAdornment';
-import {Link} from 'react-router-dom'
-import { useHistory } from "react-router-dom"; 
+import {Link,useHistory} from 'react-router-dom'
 
 const card = (
     <React.Fragment>
@@ -43,49 +42,47 @@ const card = (
   );
   
 function CreateAcoount() {
-  const input1=useRef();
-  const history = useHistory();
   const [inp,setInp]=useState()
+  const [error,setError]=useState()
     let handleChange=(e)=>{
        console.log(e.target.value)
-      setInp({...inp,[e.target.name]:e.target.value})
+               setInp({...inp,[e.target.name]:e.target.value})
     }
-    let fName=document.querySelector(".fname")
-    let lName=document.querySelector(".lname")
-    let Email=document.querySelector(".email")
-    let Passw=document.querySelector(".pass")
-    let Compass=document.querySelector(".compass")
-  let handleNext=()=>{
-    if(fName.value=="" && lName.value=="" && Email.value=="" && Passw.value=="" && Compass.value==""){
-      alert("fill all inputs")
+  const history=useHistory()
+  let handleSubmit=(e)=>{
+    e.preventDefault();
+    if(inp.pass==inp.comPass){
+      history.push("/verifyAccount")
     }
     else{
-      history.push('/varifyAccount')
+      setError("Password not match")
+
     }
   }
     return (
         <Box sx={{display: 'flex',justifyContent: 'center',alignItems: 'center',pt:6 }}>
         <Box className="mb-5">
         <Card variant="outlined" className="pl-md-4 pl-sm-3 pl-2 pr-md-5 pr-sm-4 pr-3">{card}
+        {/* <pre>{JSON.stringify(formValues,undefined,2)}</pre> */}
+        <form onSubmit={handleSubmit}>
         <Box className="d-md-flex d-block" sx={{mt:3}}>
           <Box className="col-md-6 col-sm-8 col-12 pl-0">
-        <TextField className="col-12 fname" id="outlined-basic" label="First name" size="small" variant="outlined"  required/>
+        <TextField className="col-12 fname" id="outlined-basic" label="First name" size="small" variant="outlined" name="firstName"  required/>
         </Box>
         <Box className="col-md-6 col-sm-8 col-12 pr-md-0 pr-3 mt-md-0 mt-4 pl-md-3 pl-0">
-        <TextField className="col-12 lname" id="outlined-basic" label="Last name" size="small"  variant="outlined" required />
+        <TextField className="col-12 lname" id="outlined-basic" label="Last name" size="small"  variant="outlined" name="lastName" required />
         </Box>
         </Box>
         <Box className="col-12 pr-md-0 pr-sm-4 pr-3 pl-0 mt-4">
-        <TextField id="outlined-basic" className="col-md-12 col-sm-8 col-12 email" label="Email address" size="small" variant="outlined" required/>
+        <TextField id="outlined-basic" className="col-md-12 col-sm-8 col-12 email" label="Email address" size="small" variant="outlined" name="email" required/>
         </Box>
         <Box sx={{mt:3}} className="d-md-flex d-block">
         <Box className="col-md-6  col-sm-8 col-12 pl-0">
         <TextField
         className="col-12 pass"
-        onChange={handleChange} 
-        name="pass"
           id="outlined-basic"
-          ref={input1}
+          onChange={handleChange}
+          name="pass"
           id="outlined-error-helper-text" label="Password" size="small" variant="outlined"
           type='password'
           required
@@ -97,7 +94,8 @@ function CreateAcoount() {
         <Box className="col-md-6 col-sm-8 col-12 pr-md-0 pr-3 mt-md-0 mt-4 pl-md-3 pl-0">
         <TextField id="outlined-basic"
         className="col-12 compass"
-        onChange={handleChange} name="confirmPass"
+        onChange={handleChange}
+        name="comPass"
           id="outlined-error-helper-text" label="Password" size="small"  variant="outlined" 
           required
           type='password'
@@ -105,6 +103,7 @@ function CreateAcoount() {
             endAdornment: <InputAdornment position="end"><RemoveRedEyeIcon/></InputAdornment>,
           }}
           />
+          <Typography sx={{mt:1,fontSize:14,color:"red"}}>{error}</Typography>
           </Box>
         </Box>
         <FormGroup sx={{mt:4}}>
@@ -112,10 +111,11 @@ function CreateAcoount() {
       <FormControlLabel control={<Checkbox/>} label="I would like to receive emails about new features and news at Streamify." />
     </FormGroup>
         <Box sx={{my:3,display:'flex',justifyContent:'space-between'}}>
-            <Button sx={{borderRadius:'20px',fontWeight:'bold',color:"#0A56A3"}}>SIGN IN INSTEAD</Button>
-            <Link to="/verifyAccount"><Button variant="contained" onClick={()=>{handleNext()}} sx={{borderRadius:'20px',fontWeight:'bold'}} style={{backgroundColor:"#0A56A3"}}
-            >NEXT</Button></Link>
+            <Link to="/signin"><Button sx={{borderRadius:'20px',fontWeight:'bold',color:"#0A56A3"}}>SIGN IN INSTEAD</Button></Link>
+            <Button variant="contained" type="submit" onSubmit={handleSubmit} sx={{borderRadius:'20px',fontWeight:'bold'}} style={{backgroundColor:"#0A56A3"}}
+            >NEXT</Button>
         </Box>
+        </form>
         </Card>
         <Box sx={{pr:2}}>{footerLinks}</Box>
             </Box>

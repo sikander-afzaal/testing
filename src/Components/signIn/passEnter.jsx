@@ -45,8 +45,8 @@ const card = (
           }}
         />
         <Box className="d-sm-flex d-block" sx={{mt:3,justifyContent:'space-between',alignItems:'center'}}>
-            <Button sx={{borderRadius:'20px',fontWeight:'bold',color:"#0A56A3"}}>FORGOT PASSWORD?</Button>
-            <Link to="/changePass" className="link"><Button className="mt-md-0 mt-3" variant="contained" sx={{borderRadius:'20px',fontWeight:'bold'}} style={{backgroundColor:"#0A56A3"}}>NEXT<ArrowForwardIcon sx={{ml:1,fontSize:16}}/></Button></Link>
+            <Link to="/changePass"><Button sx={{borderRadius:'20px',fontWeight:'bold',color:"#0A56A3"}}>FORGOT PASSWORD?</Button></Link>
+            <Button className="mt-md-0 mt-3" variant="contained" sx={{borderRadius:'20px',fontWeight:'bold'}} style={{backgroundColor:"#0A56A3"}}>NEXT<ArrowForwardIcon sx={{ml:1,fontSize:16}}/></Button>
         </Box>
         </Box>
       </CardContent>
