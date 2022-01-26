@@ -1,0 +1,27 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+body{
+    background-color:  #E5E5E5;
+    width: 100%;
+}
+.link{
+    text-decoration: none !important;
+}
+.verify-detail-text{
+    font-size: 19px;
+}
+@media only screen and (max-width: 542px) {
+    .verify-detail-text{
+        font-size: 16 !important;
+    }
+  }
+
+.Next{
+    visibility: hidden;
+}
+.pre{
+    visibility: visible;
+}
